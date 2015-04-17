@@ -1,5 +1,7 @@
 package org.imalygin.clustering;
 
+import org.imalygin.util.FileUtils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,9 +13,7 @@ import static java.lang.Integer.parseInt;
 public class KClustering {
 
     public KClustering() throws IOException{
-        InputStream inputStream = KClustering.class.getClassLoader().getResourceAsStream("org/imalygin/clustering/clustering2.txt");
-        BufferedReader fileReader = new BufferedReader(new InputStreamReader(inputStream));
-
+        BufferedReader fileReader = FileUtils.createReaderForFile("org/imalygin/clustering/clustering2.txt");
         int nodeNum = parseInt(fileReader.readLine());
         UnionFind unionFind = new UnionFind(nodeNum);
         String line;

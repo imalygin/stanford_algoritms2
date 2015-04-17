@@ -1,18 +1,14 @@
 package org.imalygin.clustering;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.*;
+import org.imalygin.util.FileUtils;
 
-import static java.lang.Integer.parseInt;
+import java.io.BufferedReader;
+import java.util.*;
 
 public class BigDataClustering {
 
     public static void main(String[] args) throws Exception{
-
-        InputStream inputStream = KClustering.class.getClassLoader().getResourceAsStream("org/imalygin/clustering/clustering_big.txt");
-        BufferedReader fileReader = new BufferedReader(new InputStreamReader(inputStream));
+        BufferedReader fileReader = FileUtils.createReaderForFile("org/imalygin/clustering/clustering_big.txt");
 
         String[] firstLineSplitted = fileReader.readLine().split(" ");
         int nodeNum = Integer.parseInt(firstLineSplitted[0]);

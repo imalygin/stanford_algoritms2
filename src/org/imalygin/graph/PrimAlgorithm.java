@@ -1,11 +1,10 @@
 package org.imalygin.graph;
 
 import com.google.common.collect.MinMaxPriorityQueue;
+import org.imalygin.util.FileUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -17,10 +16,8 @@ public class PrimAlgorithm {
     private final int nodeNum;
     private final Node startNode;
 
-
     public PrimAlgorithm(){
-        InputStream inputStream = OrderOfRatio.class.getClassLoader().getResourceAsStream("org/imalygin/graph/edges.txt");
-        BufferedReader fileReader = new BufferedReader(new InputStreamReader(inputStream));
+        BufferedReader fileReader = FileUtils.createReaderForFile("org/imalygin/graph/edges.txt");
         String[] firstLine;
         try {
             firstLine = fileReader.readLine().split(" ");
@@ -98,7 +95,6 @@ public class PrimAlgorithm {
             edges.remove(edge);
             edge.endPoint.edges.remove(new Edge(edge.weight, edge.endPoint, edge.startPoint));
         }
-
 
         @Override
         public String toString() {
